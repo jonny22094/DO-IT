@@ -5,19 +5,27 @@ var name;
 document.getElementById('button').addEventListener('click', function(){
 
   name = document.getElementById('text').value;
+  document.getElementById('text').value = "";
 
   var div = document.createElement('div');
-  div.className += 'rectangle animate fadeIn';
-  div.innerHTML = name;
+  div.className += 'rectangle animated1 fadeIn';
 
   document.getElementsByClassName('works_container')[0].appendChild(div);
 
 ////////////////////////////////////////////////////////////////////
 
-  var div2 = document.createElement('div');
-  div2.className += 'end';
+  var inner = document.createElement('div');
+  inner.className += 'inner';
+  inner.innerHTML = name;
 
-  document.getElementsByClassName('rectangle')[quantity+1].appendChild(div2);
+  document.getElementsByClassName('rectangle')[quantity].appendChild(inner);
+
+////////////////////////////////////////////////////////////////////
+
+  var remove = document.createElement('div');
+  remove.className += 'remove';
+
+  document.getElementsByClassName('rectangle')[quantity].appendChild(remove);
 
   quantity+=1;
 });
