@@ -1,5 +1,6 @@
 var element = new Array(100);
 var quantity=0;
+var quantity_id=0;
 var name;
 
 // Add new works
@@ -14,30 +15,32 @@ document.getElementById('button').addEventListener('click', function(){
     ////////////           box          ////////////
     var div = document.createElement('div');
     div.className = 'rectangle animated1 fadeIn';
-    div.id += quantity;
+    div.id = quantity_id;
     document.getElementsByClassName('works_container')[0].appendChild(div);
 
     ////////////           text           ////////////
     var inner = document.createElement('div');
-    inner.className += 'inner';
+    inner.className = 'inner';
     inner.innerHTML = name;
-    inner.id += quantity;
+    inner.id = quantity_id;
     document.getElementsByClassName('rectangle')[quantity].appendChild(inner);
 
     ////////////           remove           ////////////
     var remove = document.createElement('div');
-    remove.className += 'remove';
-    remove.id += quantity+''+quantity;
-    div.setAttribute('onclick', 'remove_div('+quantity+')');
+    remove.className = 'remove';
+    remove.id = quantity_id;
+    div.setAttribute('onclick', 'remove_div('+quantity_id+')');
     document.getElementsByClassName('rectangle')[quantity].appendChild(remove);
 
     quantity++;
+    quantity_id++;
     op();
   }
 });
 
 // Remove works
 function remove_div(g){
+
   var element = document.getElementById(g);
   element.className = 'rectangle animated1 fadeOut';
 
