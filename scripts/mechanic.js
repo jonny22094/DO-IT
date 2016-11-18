@@ -1,6 +1,6 @@
 var element = new Array(100);
 var quantity=0;
-var quantity_id=0;
+var high_id=0, low_id=0;
 var name;
 
 // Add new works
@@ -28,12 +28,12 @@ document.getElementById('button').addEventListener('click', function(){
     ////////////           remove           ////////////
     var remove = document.createElement('div');
     remove.className = 'remove';
-    remove.id = quantity_id;
-    div.setAttribute('onclick', 'remove_div('+quantity_id+')');
+    remove.id = high_id;
+    div.setAttribute('onclick', 'remove_div('+high_id+')');
     document.getElementsByClassName('rectangle')[quantity].appendChild(remove);
 
     quantity++;
-    quantity_id++;
+    high_id++;
     op();
   }
 });
@@ -47,6 +47,7 @@ function remove_div(g){
   setTimeout(function(){
     element.parentNode.removeChild(element);
     quantity--;
+    low_id++;
     op();
   }, 250);
 }
