@@ -1,3 +1,3 @@
 # DO-IT
 
-![DO IT] (http://imgur.com/YDkvAd1)
+![DO IT] (http://i.imgur.com/YDkvAd1.png)
