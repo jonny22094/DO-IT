@@ -5,7 +5,7 @@ var name;
 
 // Add new works
 
-document.getElementById('button').addEventListener('click', function(){
+document.getElementById('button').addEventListener('click', () => {
 
   name = document.getElementById('text').value;
   document.getElementById('text').value = "";
@@ -30,12 +30,10 @@ document.getElementById('button').addEventListener('click', function(){
     remove.className = 'remove';
     remove.id = high_id;
     remove.innerHTML = '<i class="icon-trash"></i>';
-    remove.setAttribute('onclick', 'remove_div('+high_id+')');
+    remove.addEventListener('click', )
     document.getElementsByClassName('rectangle')[quantity].appendChild(remove);
 
     save();
-    quantity++;
-    high_id++;
     op();
   }
 });
@@ -49,7 +47,6 @@ function remove_div(g){
 
   setTimeout(function(){
     element.parentNode.removeChild(element);
-    quantity--;
     op();
   }, 250);
 }
@@ -60,8 +57,21 @@ function op(){
   var open = document.getElementById('open');
       open.innerHTML = 'Open: '+quantity;
 
-  if(quantity<10) open.style.marginLeft = '220px';
-  else if(quantity<100) open.style.marginLeft = '210px';
-  else if(quantity<1000) open.style.marginLeft = '200px';
+  if(quantity<10) open.style.marginLeft = '46%';
+  else if(quantity<100) open.style.marginLeft = '42%';
+  else if(quantity<1000) open.style.marginLeft = '38%';
 
+}
+
+
+// ----- ENTER ----- //
+document.onkeydown = checkKey;
+
+function checkKey(e) {
+
+  e = e || window.event;
+
+  if (e.keyCode == '13') {
+    document.getElementById('button').click();
+  }
 }
