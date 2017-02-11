@@ -1,77 +1,41 @@
-var element = new Array(100);
-var quantity = 0;
-var high_id = window.localStorage.getItem("high_id")||0;
-var name;
+var storage = window.localStorage,
+    number  = storage.getItem('number')||0;
 
-// Add new works
+var createWorks = (text, n) => {
 
-document.getElementById('button').addEventListener('click', () => {
-
-  name = document.getElementById('text').value;
-  document.getElementById('text').value = "";
-
-  if(name.length!=0){
-
-    ////////////           box          ////////////
     var div = document.createElement('div');
-    div.className = 'rectangle animated1 fadeIn';
-    div.id = high_id;
-    document.getElementsByClassName('works_container')[0].appendChild(div);
+        div.className = 'rectangle animated1 fadeIn';
 
-    ////////////           text           ////////////
     var inner = document.createElement('div');
-    inner.className = 'inner';
-    inner.innerHTML = name;
-    inner.id = high_id;
-    document.getElementsByClassName('rectangle')[quantity].appendChild(inner);
+        inner.className = 'inner';
+        inner.innerHTML = text;
+    div.appendChild(inner);
 
-    ////////////           remove           ////////////
     var remove = document.createElement('div');
-    remove.className = 'remove';
-    remove.id = high_id;
-    remove.innerHTML = '<i class="icon-trash"></i>';
-    remove.addEventListener('click', )
-    document.getElementsByClassName('rectangle')[quantity].appendChild(remove);
+        remove.className = 'remove';
+        remove.innerHTML = '<i class="icon-trash"></i>';
+        remove.addEventListener('click', () => {
+            div.parentNode.removeChild(div);
+            storage.removeItem(n);
+        });
+    div.appendChild(remove);
 
-    save();
-    op();
-  }
+    document.getElementsByClassName('works_container')[0].appendChild(div);
+}
+
+document.getElementById('button').addEventListener('click' , () => {
+    var name = document.getElementById('text');
+
+    if(name.value != ''){
+      number++;
+      storage.setItem(number, name.value);
+      storage.setItem('number', number);
+
+      createWorks(name.value, number);
+      name.value = '';
+    }
 });
 
-// Remove works
-function remove_div(g){
-
-  var element = document.getElementById(g);
-  element.className = 'rectangle animated1 fadeOut';
-  window.localStorage.removeItem(g);
-
-  setTimeout(function(){
-    element.parentNode.removeChild(element);
-    op();
-  }, 250);
-}
-
-
-// Open
-function op(){
-  var open = document.getElementById('open');
-      open.innerHTML = 'Open: '+quantity;
-
-  if(quantity<10) open.style.marginLeft = '46%';
-  else if(quantity<100) open.style.marginLeft = '42%';
-  else if(quantity<1000) open.style.marginLeft = '38%';
-
-}
-
-
-// ----- ENTER ----- //
-document.onkeydown = checkKey;
-
-function checkKey(e) {
-
-  e = e || window.event;
-
-  if (e.keyCode == '13') {
-    document.getElementById('button').click();
-  }
+for(var i = 0; i <= number; i++){
+  if(i>0 && storage.getItem(i) != null) createWorks(storage.getItem(i), number);
 }
