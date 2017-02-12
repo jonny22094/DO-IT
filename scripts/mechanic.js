@@ -36,6 +36,6 @@ document.getElementById('button').addEventListener('click' , () => {
     }
 });
 
-for(var i = 0; i <= number; i++){
-  if(i>0 && storage.getItem(i) != null) createWorks(storage.getItem(i), number);
-}
+for(var i = 0; i <= number; i++)
+    if(i>0 && storage.getItem(i) != null) createWorks(storage.getItem(i), number);
+
