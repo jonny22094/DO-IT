@@ -54,6 +54,11 @@ border: 0;
 border-radius: 4px;
 box-shadow: 0px 1px 5px rgba(0,0,0,0.5);
 margin-left: 10px;
+outline: none;
+}
+
+#button:active{
+  background-color: #3B38EE;
 }
 
 /* WORKS STYLE */

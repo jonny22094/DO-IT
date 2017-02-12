@@ -1,0 +1,40 @@
+
+.animations {
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+}
+
+.animations1 {
+  -webkit-animation-duration: 0.25s;
+          animation-duration: 0.25s;
+}
+
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to   {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to   {opacity: 1;}
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+}
+
+@-webkit-keyframes fadeOut {
+  from {opacity: 1;}
+  to   {opacity: 0;}
+}
+
+@keyframes fadeOut {
+  from {opacity: 1;}
+  to   {opacity: 0;}
+}
+
+.fadeOut {
+  -webkit-animation-name: fadeOut;
+          animation-name: fadeOut;
+}

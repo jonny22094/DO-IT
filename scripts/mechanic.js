@@ -4,7 +4,7 @@ var storage = window.localStorage,
 var createWorks = (text, n) => {
 
     var div = document.createElement('div');
-        div.className = 'rectangle animated1 fadeIn';
+        div.className = 'rectangle animations fadeIn';
 
     var inner = document.createElement('div');
         inner.className = 'inner';
@@ -15,7 +15,10 @@ var createWorks = (text, n) => {
         remove.className = 'remove';
         remove.innerHTML = '<i class="icon-trash"></i>';
         remove.addEventListener('click', () => {
-            div.parentNode.removeChild(div);
+            div.className = 'rectangle animations1 fadeOut';
+            setTimeout( () => {
+                div.parentNode.removeChild(div);
+            }, 225);
             storage.removeItem(n);
         });
     div.appendChild(remove);
