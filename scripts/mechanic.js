@@ -1,44 +1,44 @@
 var storage = window.localStorage,
-    number  = storage.getItem('number')||0;
+    number  = storage.getItem( 'number' ) || 0;
 
-var createWorks = (text, n) => {
+var createWorks = ( text, n ) => {
 
-    var div = document.createElement('div');
+    var div = document.createElement( 'div' );
         div.className = 'rectangle animations fadeIn';
 
-    var inner = document.createElement('div');
+    var inner = document.createElement( 'div' );
         inner.className = 'inner';
         inner.innerHTML = text;
-    div.appendChild(inner);
+    div.appendChild( inner );
 
-    var remove = document.createElement('div');
+    var remove = document.createElement( 'div' );
         remove.className = 'remove';
         remove.innerHTML = '<i class="icon-trash"></i>';
         remove.addEventListener('click', () => {
             div.className = 'rectangle animations1 fadeOut';
             setTimeout( () => {
-                div.parentNode.removeChild(div);
+                div.parentNode.removeChild( div );
             }, 225);
-            storage.removeItem(n);
+            storage.removeItem( n );
         });
-    div.appendChild(remove);
+    div.appendChild( remove );
 
-    document.getElementsByClassName('works_container')[0].appendChild(div);
+    document.getElementsByClassName( 'works_container' )[ 0 ].appendChild( div );
 }
 
-document.getElementById('button').addEventListener('click' , () => {
-    var name = document.getElementById('text');
+document.getElementById( 'button' ).addEventListener('click' , () => {
+    var name = document.getElementById( 'text' );
 
-    if(name.value != ''){
+    if( name.value !== '' ){
       number++;
-      storage.setItem(number, name.value);
-      storage.setItem('number', number);
+      storage.setItem( number, name.value );
+      storage.setItem( 'number', number );
 
-      createWorks(name.value, number);
+      createWorks( name.value, number );
       name.value = '';
     }
 });
 
-for(var i = 0; i <= number; i++){
-  if(i>0 && storage.getItem(i) != null) createWorks(storage.getItem(i), i);
+for( var i = 0; i <= number; i++ ){
+  if( storage.getItem( i ) != null ) createWorks( storage.getItem( i ), i);
 }
