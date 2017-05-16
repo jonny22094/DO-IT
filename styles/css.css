@@ -21,7 +21,7 @@ height: 100vh;
   line-height: 150%;
 }
 
-.add_menu{
+form{
   transition-duration: 1s;
   font-size: 10px;
   width: 90%;
@@ -78,7 +78,6 @@ outline: none;
   float: left;
   width: 90%;
   margin-top: 14px;
-
 }
 
 .remove{
