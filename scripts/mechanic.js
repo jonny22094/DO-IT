@@ -1,24 +1,24 @@
-var storage = window.localStorage,
-    number  = storage.getItem( 'number' ) || 0;
+let storage = window.localStorage;
+let number  = storage.getItem( 'number' ) || 0;
 
-var createWorks = ( text, n ) => {
+const createWorks = ( text, n ) => {
 
-    var div = document.createElement( 'div' );
+    let div = document.createElement( 'div' );
         div.className = 'rectangle animations fadeIn';
 
-    var inner = document.createElement( 'div' );
+    let inner = document.createElement( 'div' );
         inner.className = 'inner';
         inner.innerHTML = text;
     div.appendChild( inner );
 
-    var remove = document.createElement( 'div' );
+    let remove = document.createElement( 'div' );
         remove.className = 'remove';
         remove.innerHTML = '<i class="icon-trash"></i>';
         remove.addEventListener('click', () => {
             div.className = 'rectangle animations1 fadeOut';
             setTimeout( () => {
                 div.parentNode.removeChild( div );
-            }, 225);
+            }, 225 );
             storage.removeItem( n );
         });
     div.appendChild( remove );
@@ -26,8 +26,8 @@ var createWorks = ( text, n ) => {
     document.getElementsByClassName( 'works_container' )[ 0 ].appendChild( div );
 }
 
-document.getElementById( 'button' ).addEventListener('click' , () => {
-    var name = document.getElementById( 'text' );
+document.getElementById( 'button' ).addEventListener( 'click' , () => {
+    let name = document.getElementById( 'text' );
 
     if( name.value !== '' ){
       number++;
@@ -37,8 +37,8 @@ document.getElementById( 'button' ).addEventListener('click' , () => {
       createWorks( name.value, number );
       name.value = '';
     }
-});
+}, false );
 
-for( var i = 0; i <= number; i++ ){
-  if( storage.getItem( i ) != null ) createWorks( storage.getItem( i ), i);
+for( let i = 0; i <= number; i++ ){
+  if( storage.getItem( i ) != null ) createWorks( storage.getItem( i ), i );
 }
