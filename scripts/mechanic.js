@@ -1,7 +1,7 @@
-let storage = window.localStorage;
-let number  = storage.getItem( 'number' ) || 0;
+const storage = window.localStorage;
+let List      = JSON.parse( storage.getItem( 'TODO' ) ) || {} ;
 
-const createWorks = ( text, n ) => {
+const createWorks = ( text, id ) => {
 
     let div = document.createElement( 'div' );
         div.className = 'rectangle animations fadeIn';
@@ -19,7 +19,8 @@ const createWorks = ( text, n ) => {
             setTimeout( () => {
                 div.parentNode.removeChild( div );
             }, 225 );
-            storage.removeItem( n );
+            delete List[ id ];
+            storage.setItem( "TODO", JSON.stringify( List ) );
         });
     div.appendChild( remove );
 
@@ -30,15 +31,14 @@ document.getElementById( 'button' ).addEventListener( 'click' , () => {
     let name = document.getElementById( 'text' );
 
     if( name.value !== '' ){
-      number++;
-      storage.setItem( number, name.value );
-      storage.setItem( 'number', number );
+        List[ Object.keys( List ).length ] = name.value;
+        storage.setItem( "TODO", JSON.stringify( List ) );
 
-      createWorks( name.value, number );
-      name.value = '';
+        createWorks( name.value );
+        name.value = '';
     }
 }, false );
 
-for( let i = 0; i <= number; i++ ){
-  if( storage.getItem( i ) != null ) createWorks( storage.getItem( i ), i );
+for( data in List ){
+    createWorks( List[ data ], data );
 }
