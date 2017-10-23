@@ -4,7 +4,7 @@ let List      = JSON.parse( storage.getItem( 'TODO' ) ) || {} ;
 const createWorks = ( text, id ) => {
 
     let div = document.createElement( 'div' );
-        div.className = 'rectangle animations fadeIn';
+        div.className = 'rectangle center animations fadeIn';
 
     let inner = document.createElement( 'div' );
         inner.className = 'inner';
