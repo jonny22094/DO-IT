@@ -30,7 +30,7 @@ const createWorks = ( text, id ) => {
 document.getElementById( 'button' ).addEventListener( 'click' , () => {
     let name = document.getElementById( 'text' );
 
-    if( name.value !== '' ){
+    if( name.value !== '' ) {
         List[ Object.keys( List ).length ] = name.value;
         storage.setItem( "TODO", JSON.stringify( List ) );
 
