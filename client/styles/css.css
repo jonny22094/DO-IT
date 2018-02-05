@@ -1,6 +1,6 @@
 body {
     margin: 0 !important;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto';
 
     font-size: 10px;
 }
@@ -98,6 +98,7 @@ button {
 .inner {
     flex: 1;
     padding: 5%;
+    color: rgba(0, 0, 0, 0.7);
 }
 
 .remove {

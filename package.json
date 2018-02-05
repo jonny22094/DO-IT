@@ -1,0 +1,16 @@
+{
+  "name": "do_it",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "jonny22094",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonny22094/DO-IT/issues"
+  },
+  "homepage": "https://github.com/jonny22094/DO-IT#readme",
+  "devDependencies": {
+    "electron": "^1.7.12"
+  }
+}
