@@ -1,3 +1,3 @@
-# DO-IT
+# DO-IT in electron
 
-![DO IT](http://i.imgur.com/YDkvAd1.png)
+![DO IT](https://i.imgur.com/Av9CiRh.png)
