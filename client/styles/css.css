@@ -14,16 +14,6 @@ body {
     height: 100vh;
 }
 
-.works_container {
-    overflow: scroll;
-    flex: 1;
-
-}
-
-.works_container::-webkit-scrollbar {
-    width: 0px;
-}
-
 .header {
     display: flex;
 
@@ -112,6 +102,12 @@ ul {
 
   color: rgba(0, 0, 0, .6);
   font-size: 1.1em;
+
+  overflow-y: scroll;
+}
+
+ul::-webkit-scrollbar {
+    width: 0px;
 }
 
 ul > li {

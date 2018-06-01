@@ -1,11 +1,11 @@
 const { remote } = require("electron");
 
 document.getElementById("min-btn").addEventListener("click", () => {
-     const window = remote.getCurrentWindow();
-     window.minimize();
+     const Window = remote.getCurrentWindow();
+     Window.minimize();
 });
 
 document.getElementById("close-btn").addEventListener("click", () =>  {
-     const window = remote.getCurrentWindow();
-     window.close();
+     const Window = remote.getCurrentWindow();
+     Window.close();
 });

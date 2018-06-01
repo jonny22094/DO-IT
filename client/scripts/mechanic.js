@@ -23,21 +23,18 @@ const createWorks = text => {
     document.getElementsByTagName("ul")[0].appendChild(li);
 }
 
-const createNewWork = () => {
+document.getElementsByTagName("form")[0].addEventListener("submit" , e => {
+  e.preventDefault();
+
   let input = document.getElementById("text");
 
   if(input.value !== "") {
-      list.push(input.value);
-      storage.setItem( "TODO", JSON.stringify(list));
+    list.push(input.value);
+    storage.setItem( "TODO", JSON.stringify(list));
 
-      createWorks(input.value);
-      input.value = "";
+    createWorks(input.value);
+    input.value = "";
   }
-}
-
-document.getElementsByTagName("form")[0].addEventListener("submit" , e => {
-    e.preventDefault();
-    createNewWork();
 }, false );
 
 list.map(text => createWorks(text));

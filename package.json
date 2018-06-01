@@ -11,6 +11,6 @@
   },
   "homepage": "https://github.com/jonny22094/DO-IT#readme",
   "devDependencies": {
-    "electron": "^1.7.12"
+    "electron": "^2.0.2"
   }
 }
