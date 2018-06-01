@@ -1,44 +1,43 @@
 const storage = window.localStorage;
-let List      = JSON.parse( storage.getItem( 'TODO' ) ) || {} ;
+let list = JSON.parse(storage.getItem("TODO")) || [];
 
-const createWorks = ( text, id ) => {
+const createWorks = text => {
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    const i = document.createElement( "i" );
 
-    let div = document.createElement( 'div' );
-        div.className = 'rectangle center animations fadeIn';
+    a.innerHTML = text;
 
-    let inner = document.createElement( 'div' );
-        inner.className = 'inner';
-        inner.innerHTML = text;
-    div.appendChild( inner );
+    i.className = "fas fa-trash";
+    i.addEventListener("click", () => {
+      if(list.length === 1) list = [];
+      else list.splice(list.indexOf(text), 1);
 
-    let remove = document.createElement( 'div' );
-        remove.className = 'remove';
-        remove.innerHTML = '<i class="icon-trash"></i>';
-        remove.addEventListener('click', () => {
-            div.className = 'rectangle animations1 fadeOut';
-            setTimeout( () => {
-                div.parentNode.removeChild( div );
-            }, 225 );
-            delete List[ id ];
-            storage.setItem( "TODO", JSON.stringify( List ) );
-        });
-    div.appendChild( remove );
+      li.parentNode.removeChild(li);
+      storage.setItem("TODO", JSON.stringify(list));
+      console.log(list);
+    });
 
-    document.getElementsByClassName( 'works_container' )[ 0 ].appendChild( div );
+    li.appendChild(a);
+    li.appendChild(i);
+    document.getElementsByTagName("ul")[0].appendChild(li);
 }
 
-document.getElementById( 'button' ).addEventListener( 'click' , () => {
-    let name = document.getElementById( 'text' );
+const createNewWork = () => {
+  let input = document.getElementById("text");
 
-    if( name.value !== '' ) {
-        List[ Object.keys( List ).length ] = name.value;
-        storage.setItem( "TODO", JSON.stringify( List ) );
+  if(input.value !== "") {
+      list.push(input.value);
+      storage.setItem( "TODO", JSON.stringify(list));
 
-        createWorks( name.value );
-        name.value = '';
-    }
+      createWorks(input.value);
+      input.value = "";
+  }
+}
+
+document.getElementsByTagName("form")[0].addEventListener("submit" , e => {
+    e.preventDefault();
+    createNewWork();
 }, false );
 
-for( data in List ){
-    createWorks( List[ data ], data );
-}
+list.map(text => createWorks(text));
